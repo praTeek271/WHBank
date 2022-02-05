@@ -3,5 +3,17 @@
 {% block id %}Contact Us{% endblock id %}
 {% block body %}
 <!-- {{accid}}  -->
+<div class="container">
+{% for i in acc %}
+    <div class="card w-50 col">
+        <div class="card-body">
+            <div class="container" style="border-radius: 4rem;"><img src="/media/{{i.customer_image}}" class="card-img-top" alt="..."></div>
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text"><b>{i.name}<br>{i.email}</b></p>
+            <a href="#" class="btn btn-primary">Button</a>
+        </div>
+    </div>
+</div>
+{% endfor %}
 is the account user id
 {% endblock body %}

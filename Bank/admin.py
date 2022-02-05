@@ -1,10 +1,10 @@
 from django.contrib import admin
-from Bank.models import FeedBack
+from Bank.models import FeedBack,CustomerAccount,transectiondetail
 
 # Register your models here. 
 admin.site.register(FeedBack)
-# admin.site.register(User)
-# admin.site.register(CustomerAccount)
+admin.site.register(transectiondetail)
+admin.site.register(CustomerAccount)
 
 
 

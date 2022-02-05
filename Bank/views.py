@@ -2,10 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render,redirect
 from Bank.models import FeedBack as feed
 from datetime import datetime
-# from .forms import SignUpForm,LoginForm
-
-from django.contrib.auth import authenticate,login,logout
-
+from .models import CustomerAccount,transectiondetail
 
 def homepage(request):
     
@@ -13,8 +10,10 @@ def homepage(request):
 
 
 def viewMember(request):
-    # params={'accid':'accid Input  '}
-    return (render(request,'MemberView.html'))
+
+    Account=CustomerAccount.objects.all()
+    params={'acc':Account}
+    return (render(request,'MemberView.html',params))
 
 
 def FeedBackUs(request):
