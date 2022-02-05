@@ -1,0 +1,43 @@
+{% extends 'Basic.html' %}
+{% block title %}Green Bank of India{% endblock title %} 
+{% block id %}Contact Us{% endblock id %} 
+{% block bodystyle %}style="background-color: #20b5ad40;"{% endblock bodystyle %}
+{% block body %} 
+
+<div class="container" >
+<div style="padding-left: 31rem;">
+    <h1> Contact Us </h1>
+</div>
+
+<form method="POST" style="padding:4rem; padding-block:4rem;">
+    {% csrf_token %}
+    <div class="row mb-3">
+        <label for="inputEmail3" class="col-sm-2 col-form-label">User Name</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="name" name="name" placeholder="User_Name">
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+        <div class="col-sm-10">
+            <input type="email" class="form-control" id="Email" name="Email" placeholder="example@abc.com">
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label for="inputPassword3" class="col-sm-2 col-form-label">Phone</label>
+        <div class="col-sm-10">
+            <input type="phone" class="form-control" id="phone" name="phone" placeholder="9999999999">
+        </div>
+    </div>
+    <div class="form-floating mb-4">
+
+        <div style="padding-left: 10.5rem;">
+            <textarea class="form-control" id="desc" name="desc" placeholder="Leave a comment here" style="height: 145px;"></textarea>
+        </div>
+    </div>
+
+
+    <button type="submit" class="btn btn-primary" style="margin-left:34rem" value="OK"> Post </button>
+</form>
+</div>
+{% endblock body %}
