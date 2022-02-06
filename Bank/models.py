@@ -17,7 +17,11 @@ class CustomerAccount(models.Model):
     name=models.CharField(max_length=30)
     email=models.CharField(max_length=30,null=True, blank=True)
     account_active=models.BooleanField(default=True)
-#     customer_image=models.ImageField(upload_to='customer_img', default="")
+    customer_image=models.ImageField(upload_to='customer_img', default="")
+
+    def __str__(self):
+        return(f"{self.name}, ------------> Status :{self.account_active}".format(self.name,self.account_active))
+
 # class CoustomerFeedBack(models.Model):
 #     CUname=models.CharField(max_length=30,null=True, blank=True)
 #     CUemail=models.EmailField(null=True, blank=True)
@@ -27,10 +31,15 @@ class CustomerAccount(models.Model):
 
 
 class transectiondetail(models.Model):
-    username = models.CharField(max_length=30)
-    email = models.EmailField(max_length=30)
+    sendername = models.CharField(max_length=30,default="anonymous")
+    senderemail = models.EmailField(max_length=30,blank=False,default="anonymous@anonymous.com")
+    recievername = models.CharField(max_length=30,default="anonymous")
+    recieveremail = models.EmailField(max_length=30,blank=False,default="anonymous@anonymous.com")
     deducted_amt = models.IntegerField()
     credited_amt = models.IntegerField()
     account_balance = models.IntegerField()
+
+    def __str__(self):
+        return(f"{self.sendername} to {self.recievername}".format(self.sendername,self.recievername))
 
 #---------------------------------------------------------------------------------------------------------------
