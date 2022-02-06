@@ -20,7 +20,7 @@ class CustomerAccount(models.Model):
     customer_image=models.ImageField(upload_to='customer_img', default="")
 
     def __str__(self):
-        return(f"{self.name}, ------------> Status :{self.account_active}".format(self.name,self.account_active))
+        return(f"{self.name} ------------> Status :{self.account_active}".format(self.name,self.account_active))
 
 # class CoustomerFeedBack(models.Model):
 #     CUname=models.CharField(max_length=30,null=True, blank=True)
@@ -40,6 +40,6 @@ class transectiondetail(models.Model):
     account_balance = models.IntegerField()
 
     def __str__(self):
-        return(f"{self.sendername} to {self.recievername}".format(self.sendername,self.recievername))
+        return(f"{self.sendername}  -- to -->    {self.recievername}".format(self.sendername,self.recievername))
 
 #---------------------------------------------------------------------------------------------------------------
