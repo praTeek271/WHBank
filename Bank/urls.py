@@ -6,5 +6,6 @@ urlpatterns = [
     path('', views.homepage, name='homepage'),
     path('feedback/', views.FeedBackUs, name='FeedBackUs'),
     path('ViewMember/', views.viewMember, name='Members'),
-    path('login/', views.loginFEAT, name='loginUser')
+    path('customer/<int:acc>', views.Member, name='ViewMemberdetails'),
+   
 ]

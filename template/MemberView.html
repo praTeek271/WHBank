@@ -7,21 +7,39 @@
 <section>
 {% for customer in acc %}
 {% csrf_token %}
-<div class="card w-50 col"style="box-shadow: 8px 8px #3a393945; margin: 2rem;">
-    <div class="card-body">
-        <div  id="user_image" >
-            {% load static %}
-            <img src="{% static 'media/user.png' %}" class="card-img" style="height: 49px;width: 57px;" alt="...">
-            <p class="card-text">
-            {% if customer.account_active == True %}
-            <div class="Account_status" style="color:Green;font-weight: bold;">Account : Active</div>
-            {% else %}
-            <div class="Account_status" style="color:Red;font-weight: bold;">Account : Inactive</div>
-            {% endif %}
-            <b>{{customer.name}}<br>{{customer.email}}</b></p>
+<a href="/customer/{{customer.id}}" style="text-decoration: none;color:inherit;">
+    
+        <div class="card w-50 col"style="box-shadow: 8px 8px #3a393945; margin: 2rem;">
+            <div class="card-body">
+                <table>
+                    <tr>
+                      <th></th>
+                      <th><b>{{customer.name}}</b></th>
+                    </tr>
+                    <tr>
+                        <td>
+                            {% load static %}
+                            <img src="{% static 'media/user.png' %}" class="card-img" style="height: 49px;width: 57px;" alt="...">
+                        </td>
+                        <td>
+                            <b><i>{{customer.email}}</i></b>
+                        </td>
+                    </tr>
+                    <tr>
+                      <td style="color:white;">hhhhhhhhhhhhhhhhhh</td>
+                      <td>
+                        {% if customer.account_active == True %}
+                        <div class="Account_status" style="color:Green;font-weight: bold;">Account : Active</div>
+                        {% else %}
+                        <div class="Account_status" style="color:Red;font-weight: bold;">Account : Inactive</div>
+                        {% endif %} 
+                      </td>
+                    </tr>
+                  </table>
+               
+            </div>
         </div>
-    </div>
-</div>
+<!-- </button> -->
 </section>
 
 {% endfor %}

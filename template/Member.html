@@ -1,0 +1,35 @@
+{% extends 'Basic.html' %}
+
+
+{% block title%} {{memberDetail.name}} - My Awesome Cart{% endblock %}
+{% block body %}
+<div class="container my-4">
+    <div class="row">
+    <div class="col-md-4">
+    <div class="row">
+        <img src="{{memberDetail.image}}" width="233px" height="385px">
+    </div>
+    </div>
+
+    <div class="col-md-8">
+        <h5>{{memberDetail.name}}</h5>
+        <p>{{memberDetail.email}}</p>
+        <p><b>${{memberDetail.totalbalance}} </b></p><br>
+        <p>{% if memberDetail.account_active == True %}
+          <div class="Account_status" style="color:Green;font-weight: bold;">Account : Active</div>
+          {% else %}
+          <div class="Account_status" style="color:Red;font-weight: bold;">Account : Inactive</div>
+          {% endif %}</p>
+        
+
+
+    </div>
+    </div>
+
+
+</div>
+{% comment %}---------------------------- transaction form ----------------------------------{% endcomment %}
+
+
+
+{% endblock body %}

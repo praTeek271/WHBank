@@ -32,21 +32,6 @@ def FeedBackUs(request):
     return (render(request,'feedback.html',parms))
 
 # --------------------------------------------------------------------------
-def signup(request): #register function
-    msg=None
-    form="hello from form"
-    return (render(request,'register.html',{'form':form,'msg':msg}))
-   
-    
-def loginFEAT(request):
-
-    msg=None
-    form="hello from form"
-    return (render(request,'login.html',{'forms':form,'msg':msg})) 
-
-def logoutFEAT(request):
-    
-    return (render(request,'Homepage.html'))
-
-# -------------------------------------------------------------------------------
-
+def Member(request,acc): #register function
+    member= Account=CustomerAccount.objects.get(id=acc)  #     <----------------------    # error lies here
+    return render(request, 'Member.html', {'memberDetail':member})
