@@ -34,4 +34,24 @@ def FeedBackUs(request):
 # --------------------------------------------------------------------------
 def Member(request,acc): #register function
     member= Account=CustomerAccount.objects.get(id=acc)  #     <----------------------    # error lies here
-    return render(request, 'Member.html', {'memberDetail':member})
+
+    if request.method=="POST":
+        rname=request.POST.get("rname")
+        if (member.name ==rname):
+            remail=request.POST.get("rEmail")
+            if (member.email==remail):
+                sname=request.user.username
+                if (member.name ==None):
+                    return(HttpResponse("<b>please Login <br>To make any Transactions...</b>"))
+                else:
+                    semail=request.user.username+'@gmail.com'
+                    sphone=request.POST.get('sphoneno')
+                    if (member.phoneno==sphone):
+                        rphone=request.POST.get("rphoneno")
+                        if(member.phoneno==rphone):
+                            transfer_detail=transectiondetail(recievername=rname,recieveremail=remail,sendername=sname,senderemail=semail)
+                            transfer_detail.save()
+        else:
+            return (render(request, 'Member.html', {'memberDetail':{'name':'Invalid transaction detail','email':'Please Try Again'}}))
+            
+    return (render(request, 'Member.html', {'memberDetail':member}))
