@@ -33,25 +33,40 @@ def FeedBackUs(request):
 
 # --------------------------------------------------------------------------
 def Member(request,acc): #register function
-    member= Account=CustomerAccount.objects.get(id=acc)  #     <----------------------    # error lies here
+    member= CustomerAccount.objects.get(id=acc)    
 
     if request.method=="POST":
         rname=request.POST.get("rname")
-        if (member.name ==rname):
+        if (rname in member.name):
             remail=request.POST.get("rEmail")
-            if (member.email==remail):
+            if (remail in member.email):
                 sname=request.user.username
                 if (member.name ==None):
                     return(HttpResponse("<b>please Login <br>To make any Transactions...</b>"))
                 else:
                     semail=request.user.username+'@gmail.com'
                     sphone=request.POST.get('sphoneno')
-                    if (member.phoneno==sphone):
-                        rphone=request.POST.get("rphoneno")
-                        if(member.phoneno==rphone):
-                            transfer_detail=transectiondetail(recievername=rname,recieveremail=remail,sendername=sname,senderemail=semail)
+                    rphone=request.POST.get("rphoneno")
+                    if(rphone in member.phoneno and sphone in member.phoneno):
+                        sammount=request.POST.get('sammount')
+                        if (member.totalbalance >sammount):
+                            transfer_detail=transectiondetail(recievername=rname,recieveremail=remail,sendername=sname,senderemail=semail,deducted_amt=sammount,account_balance=(member.totalbalance-sammount))
                             transfer_detail.save()
+                            member1=CustomerAccount.objects.get(name=rname) # Reciever`s id
+                            print(member1)
+                            member1.totalbalance=(member1.totalbalance+sammount)
+
+                            member2=CustomerAccount.objects.get(name=sname) # Sender`s id
+                            print(member2)
+                            member2.totalbalance=(member1.totalbalance-sammount)
+                            try:
+                                member1.save() #    <----------------,
+                                member2.save() #    <----------------'............(save them in the database)
+                            except:
+                                print("Got an Error in Saveing particular element of the database")
+
         else:
-            return (render(request, 'Member.html', {'memberDetail':{'name':'Invalid transaction detail','email':'Please Try Again'}}))
-            
+            return (render(request, 'Member.html', {'memberDetail':{'name':'Invalid transaction detail','email':'Please  Check your details and Try Again'}}))
+
     return (render(request, 'Member.html', {'memberDetail':member}))
+    

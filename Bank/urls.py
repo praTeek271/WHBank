@@ -9,3 +9,5 @@ urlpatterns = [
     path('customer/<int:acc>', views.Member, name='ViewMemberdetails'),
    
 ]
+
+
