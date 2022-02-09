@@ -33,17 +33,17 @@ def FeedBackUs(request):
 
 # --------------------------------------------------------------------------
 def Member(request,acc): #register function
-    member= CustomerAccount.objects.get(id=acc)    
+    member= CustomerAccount.objects.get(id=acc) 
 
-    if request.method=="POST":
-        rname=request.POST.get("rname")
-        if (rname in member.name):
-            remail=request.POST.get("rEmail")
-            if (remail in member.email):
-                sname=request.user.username
-                if (member.name ==None):
-                    return(HttpResponse("<b>please Login <br>To make any Transactions...</b>"))
-                else:
+ #------------------------ Transaction-Form------------------------------------
+    print("------------>",request.user.username)   
+    if (request.user.username!=(None or "")):
+        if request.method=="POST":
+            rname=request.POST.get("rname")
+            if (rname in CustomerAccount.objects.values('name')):
+                remail=request.POST.get("rEmail")
+                if (remail in member.email):
+                    sname=request.user.username
                     semail=request.user.username+'@gmail.com'
                     sphone=request.POST.get('sphoneno')
                     rphone=request.POST.get("rphoneno")
@@ -64,9 +64,31 @@ def Member(request,acc): #register function
                                 member2.save() #    <----------------'............(save them in the database)
                             except:
                                 print("Got an Error in Saveing particular element of the database")
+                        else:
+                            return(HttpResponse('not enough balance'))
+                    else:
+                        return(HttpResponse('Phone invalid'))
+                else:
+                    return(HttpResponse('Email invalid'))
+            else:
+                return (render(request, 'Member.html', {'memberDetail':{'name':'Invalid transaction detail','email':'Please  Check your details and Try Again'}}))
+    else:
+        return(HttpResponse("<b>please Login <br>To make any Transactions...</b>"))
+#-------------------------------------------**__**----------------------------------------------------
+        # pass
+    return (render(request, 'Member.html', {'memberDetail':member,'username':request.user.username}))
 
-        else:
-            return (render(request, 'Member.html', {'memberDetail':{'name':'Invalid transaction detail','email':'Please  Check your details and Try Again'}}))
+#______________________________________________________________________________________________________
+# the transaction as to take two ways :                                                               |
+#                                  >    one will be to credit of reciever                             |
+#   ^                              >    the second will be to deduct the sender                       |
+#   |                                                                                                 |
+#   |         and save in their respective objects so that they can be fetched for showing            |
+#___________________________________________--*--_____________________________________________________|
 
-    return (render(request, 'Member.html', {'memberDetail':member}))
-    
+
+def transaction_log(request,user):
+    Ddetail=transectiondetail.objects.get(sendername=user)
+    Rdetail=transectiondetail.objects.get(recievername=user)
+    print("--------------------->",Ddetail)
+    return(render(request, 'Transaction-Log.html',{'userDdetails':Ddetail,'userRdetails':Rdetail}))

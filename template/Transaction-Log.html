@@ -1,0 +1,151 @@
+{% extends 'Basic.html' %}
+
+{% block style %}
+<style>
+
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700');
+
+
+*, *:before, *:after {
+	box-sizing:border-box;
+}
+
+body {
+	font-family:'Source Sans Pro', sans-serif;
+	margin:0;
+}
+
+h1,h2,h3,h4,h5,h6 {
+	margin:0;
+}
+
+.container {
+	max-width: 1000px;
+	margin-right:auto;
+	margin-left:auto;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	min-height:100vh;
+}
+
+.table {
+	width:100%;
+	height: max-content;
+}
+
+.table-header {
+	display:flex;
+	width:100%;
+	background:#000;
+}
+
+.table-row {
+	display:flex;
+	width:100%;
+}
+
+.table-data, .header__item {
+	flex: 1 1 20%;
+	text-align:center;
+}
+
+.header__item {
+	text-transform:uppercase;
+}
+
+.filter__link {
+	color:white;
+	text-decoration: none;
+	position:relative;
+	display:inline-block;
+	
+	
+}
+
+</style>
+{% endblock %}
+
+{% block title%} {{memberDetail.name}} - Green Bank of India{% endblock %}
+{% block username %}{{username}}{% endblock username %}
+{% block body %}
+
+Category -----Sender Me:
+<div class="container">
+	
+	<div class="table">
+		<div class="table-header">
+			<div class="header__item"><a id="sname" class="filter__link" href="#">Sender`s Name</a></div>
+			<div class="header__item"><a id="semail"  class="filter__link" href="#">Sender`s Email</a></div>
+			<div class="header__item"><a id="rname"  class="filter__link" href="#">Reciever`s Name</a></div>
+			<div class="header__item"><a id="remail"  class="filter__link" href="#">Reciever`s Email</a></div>
+			<div class="header__item"><a id="debited"  class="filter__link" href="#">Deducted Ammount</a></div>
+			<div class="header__item"><a id="credited"  class="filter__link" href="#">Credited Ammount</a></div>
+			<div class="header__item"><a id="total"  class="filter__link" href="#">Total Balance left</a></div>
+		</div>
+		{%for details in userdetails %}
+
+
+		<div class="table-content"  >
+			<div class="table-row">		
+				<div class="table-data">{{details.senderename}}</div>
+				<div class="table-data">{{details.senderemail}}</div>
+				<div class="table-data">{{details.recievername}} </div>
+				<div class="table-data">{{details.recieveremail}}</div>
+				<div class="table-data">{{details.deducted_amt}}</div>
+				<div class="table-data">{{details.credited_amt}} </div>
+				<div class="table-data">{{details.account_balance}}</div>
+			</div>
+
+		</div>
+			
+		
+		{% endfor %}
+	</div>
+</div>
+
+
+
+
+    {%for details in userdetails %}
+    <div class="details">{{details}}</div>
+    {% endfor %}
+
+    Category -----Sender Me:
+
+    {{userDdetails.senderename}}     <br>
+    {{userDdetails.senderemail}}     <br>
+    {{userDdetails.recievername}}    <br>
+    {{userDdetails.recieveremail}}   <br>    
+    {{userDdetails.deducted_amt}}    <br>
+    {{userDdetails.credited_amt}}    <br>
+    {{userDdetails.account_balance}} <br>
+
+    Category ------Reciever Me:
+
+    
+    {{userRdetails.senderename}}     <br>
+    {{userRdetails.senderemail}}     <br>
+    {{userRdetails.recievername}}    <br>
+    {{userRdetails.recieveremail}}   <br>    
+    {{userRdetails.deducted_amt}}    <br>
+    {{userRdetails.credited_amt}}    <br>
+    {{userRdetails.account_balance}} <br> -->
+
+
+
+
+{% endblock %}
+{% block js%}
+<script>
+	function oddeven(id) {
+		if (id%2==0){
+			return(true);
+		}
+		else{
+			return(false);
+		}
+	}
+	document.getElementsByClassName('table-content').innerHTML = myFunction(10, 2); 
+</script>
+{% endblock %}
