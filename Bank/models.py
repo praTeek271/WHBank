@@ -32,7 +32,6 @@ class transectiondetail(models.Model):
     recieveremail = models.EmailField(max_length=30,blank=False,default="anonymous@anonymous.com")
     deducted_amt = models.IntegerField(default=0)
     credited_amt = models.IntegerField(default=0)
-    account_balance = models.IntegerField(default=1000)
 
     def __str__(self):
         return(f"{self.sendername}  -- to -->    {self.recievername}".format(self.sendername,self.recievername))
