@@ -75,20 +75,25 @@ def Member(request,acc): #register function
     else:
         return(HttpResponse("<b>please Login <br>To make any Transactions...</b>"))
 #-------------------------------------------**__**----------------------------------------------------
-        # pass
     return (render(request, 'Member.html', {'memberDetail':member,'username':request.user.username}))
 
-#______________________________________________________________________________________________________
-# the transaction as to take two ways :                                                               |
-#                                  >    one will be to credit of reciever                             |
-#   ^                              >    the second will be to deduct the sender                       |
-#   |                                                                                                 |
-#   |         and save in their respective objects so that they can be fetched for showing            |
-#___________________________________________--*--_____________________________________________________|
+#   +-----------------------------------------------------------------------------------------------------+
+#   | the transaction as to take two ways :                                                               |
+#   |                                  >    one will be to credit of reciever                             |
+#   |   ^                              >    the second will be to deduct the sender                       |
+#   |   |                                                                                                 |
+#   |   |         and save in their respective objects so that they can be fetched for showing            |
+#   +-----------------------------------------**_**-------------------------------------------------------+
 
 
 def transaction_log(request,user):
-    Ddetail=transectiondetail.objects.get(sendername=user)
-    Rdetail=transectiondetail.objects.get(recievername=user)
+    try:
+        Ddetail=transectiondetail.objects.filter(sendername=user)
+    except:
+        Ddetail={'name':None}
+    try:
+        Rdetail=transectiondetail.objects.filter(recievername=user)
+    except:
+        Rdetail={'name':None}
     print("--------------------->",Ddetail)
     return(render(request, 'Transaction-Log.html',{'userDdetails':Ddetail,'userRdetails':Rdetail}))

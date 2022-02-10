@@ -32,6 +32,7 @@ h1,h2,h3,h4,h5,h6 {
 .table {
 	width:100%;
 	height: max-content;
+	border-radius: 15px 50px 30px 5px;
 }
 
 .table-header {
@@ -49,7 +50,12 @@ h1,h2,h3,h4,h5,h6 {
 	flex: 1 1 20%;
 	text-align:center;
 }
-
+.transac .table .table-content .table-row .table-data{
+	background-color: #f5f5f5cc; 
+}
+.transac{
+	background: linear-gradient(162deg, #04e9dc, #07b5e9);
+}
 .header__item {
 	text-transform:uppercase;
 }
@@ -70,31 +76,30 @@ h1,h2,h3,h4,h5,h6 {
 {% block username %}{{username}}{% endblock username %}
 {% block body %}
 
-Category -----Sender Me:
-<div class="container">
-	
+
+<div class="container transac">
+	Category -----Sender Me:
 	<div class="table">
-		<div class="table-header">
+		<div class="table-header" style="border-start-start-radius: 1rem;border-start-end-radius: 1rem;">
 			<div class="header__item"><a id="sname" class="filter__link" href="#">Sender`s Name</a></div>
 			<div class="header__item"><a id="semail"  class="filter__link" href="#">Sender`s Email</a></div>
 			<div class="header__item"><a id="rname"  class="filter__link" href="#">Reciever`s Name</a></div>
 			<div class="header__item"><a id="remail"  class="filter__link" href="#">Reciever`s Email</a></div>
 			<div class="header__item"><a id="debited"  class="filter__link" href="#">Deducted Ammount</a></div>
 			<div class="header__item"><a id="credited"  class="filter__link" href="#">Credited Ammount</a></div>
-			<div class="header__item"><a id="total"  class="filter__link" href="#">Total Balance left</a></div>
 		</div>
-		{%for details in userdetails %}
+		{%for details in userDdetails %}
 
 
 		<div class="table-content"  >
-			<div class="table-row">		
-				<div class="table-data">{{details.senderename}}</div>
+			<div class="table-row" style="border-start-start-radius: 1rem;border-start-end-radius: 1rem;">		
+				<div class="table-data">{{details.sendername}}</div>
 				<div class="table-data">{{details.senderemail}}</div>
 				<div class="table-data">{{details.recievername}} </div>
 				<div class="table-data">{{details.recieveremail}}</div>
-				<div class="table-data">{{details.deducted_amt}}</div>
-				<div class="table-data">{{details.credited_amt}} </div>
-				<div class="table-data">{{details.account_balance}}</div>
+				<div class="table-data">{{details.money_amt}}</div>
+				<div class="table-data">0 </div>
+				<!-- <div class="table-data">{{details.account_balance}}</div> -->
 			</div>
 
 		</div>
@@ -106,31 +111,40 @@ Category -----Sender Me:
 
 
 
+<div class="container transac">
+	Category -----Reciever Me:<br><br>
+	{% if userRdetails.length == '0' %}
+			<div class="free" ><br><h1>No Recieved Transactions</h1><br><h1>Sorry!</h1></div>
+	{% else %}
+	<div class="table">
+		
+		<div class="table-header" style="border-start-start-radius: 1rem;border-start-end-radius: 1rem;">
+			<div class="header__item"><a id="sname" class="filter__link" href="#">Sender`s Name</a></div>
+			<div class="header__item"><a id="semail"  class="filter__link" href="#">Sender`s Email</a></div>
+			<div class="header__item"><a id="rname"  class="filter__link" href="#">Reciever`s Name</a></div>
+			<div class="header__item"><a id="remail"  class="filter__link" href="#">Reciever`s Email</a></div>
+			<div class="header__item"><a id="debited"  class="filter__link" href="#">Deducted Ammount</a></div>
+			<div class="header__item"><a id="credited"  class="filter__link" href="#">Credited Ammount</a></div>
+		</div>
+		{%for details in userRdetails %}
+	
+		<div class="table-content"  >
+			<div class="table-row" style="border-start-start-radius: 1rem;border-start-end-radius: 1rem;">		
+				<div class="table-data">{{details.sendername}}</div>
+				<div class="table-data">{{details.senderemail}}</div>
+				<div class="table-data">{{details.recievername}} </div>
+				<div class="table-data">{{details.recieveremail}}</div>
+				<div class="table-data">{{details.money_amt}}</div>
+				<div class="table-data">0 </div>
+				<!-- <div class="table-data">{{details.account_balance}}</div> -->
+			</div>
 
-    {%for details in userdetails %}
-    <div class="details">{{details}}</div>
-    {% endfor %}
-
-    Category -----Sender Me:
-
-    {{userDdetails.senderename}}     <br>
-    {{userDdetails.senderemail}}     <br>
-    {{userDdetails.recievername}}    <br>
-    {{userDdetails.recieveremail}}   <br>    
-    {{userDdetails.deducted_amt}}    <br>
-    {{userDdetails.credited_amt}}    <br>
-    {{userDdetails.account_balance}} <br>
-
-    Category ------Reciever Me:
-
-    
-    {{userRdetails.senderename}}     <br>
-    {{userRdetails.senderemail}}     <br>
-    {{userRdetails.recievername}}    <br>
-    {{userRdetails.recieveremail}}   <br>    
-    {{userRdetails.deducted_amt}}    <br>
-    {{userRdetails.credited_amt}}    <br>
-    {{userRdetails.account_balance}} <br> -->
+		</div>
+			
+		{% endfor %}
+		{% endif %}
+	</div>
+</div>
 
 
 

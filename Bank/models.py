@@ -13,7 +13,7 @@ class FeedBack(models.Model):
 
     
 class CustomerAccount(models.Model):
-  
+    
     name=models.CharField(max_length=30)
     email=models.CharField(max_length=30,null=True, blank=True)
     account_active=models.BooleanField(default=True)
@@ -21,19 +21,28 @@ class CustomerAccount(models.Model):
     totalbalance=models.IntegerField(default=1000)
     phoneno=models.CharField(max_length=11,blank=True)
     
+
     def __str__(self):
         return(f"{self.id}--{self.name} ------------> Status :{self.account_active}".format(self.id,self.name,self.account_active))
 
 
 class transectiondetail(models.Model):
     sendername = models.CharField(max_length=30,default="anonymous")
-    senderemail = models.EmailField(max_length=30,blank=False,default="anonymous@gmail.com.com")
+    senderemail = models.EmailField(max_length=30,blank=False,default="anonymous@gmail.com")
     recievername = models.CharField(max_length=30,default="anonymous")
-    recieveremail = models.EmailField(max_length=30,blank=False,default="anonymous@anonymous.com")
-    deducted_amt = models.IntegerField(default=0)
-    credited_amt = models.IntegerField(default=0)
+    recieveremail = models.EmailField(max_length=30,blank=False,default="anonymous@gmail.com")
+    money_amt = models.IntegerField(default=0)
 
     def __str__(self):
         return(f"{self.sendername}  -- to -->    {self.recievername}".format(self.sendername,self.recievername))
 
 #---------------------------------------------------------------------------------------------------------------
+
+# class transection(CustomerAccount,transectiondetail):
+
+#     tr=transectiondetail()
+#     n=CustomerAccount.objects.get(name=tr.sendername)
+#     m=CustomerAccount.objects.get(name=tr.recievername)
+#     n.totalbalance= n.totalbalance - deducted_amt
+#     m.totalbalance= m.totalbalance + credited_amt
+
