@@ -27,7 +27,7 @@ class CustomerAccount(models.Model):
 
 class transectiondetail(models.Model):
     sendername = models.CharField(max_length=30,default="anonymous")
-    senderemail = models.EmailField(max_length=30,blank=False,default="anonymous@anonymous.com")
+    senderemail = models.EmailField(max_length=30,blank=False,default="anonymous@gmail.com.com")
     recievername = models.CharField(max_length=30,default="anonymous")
     recieveremail = models.EmailField(max_length=30,blank=False,default="anonymous@anonymous.com")
     deducted_amt = models.IntegerField(default=0)
