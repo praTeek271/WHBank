@@ -1,10 +1,33 @@
 {% extends 'Basic.html' %}
 {% block title %}Green Bank of India{% endblock title %}
+{% block style%}
+<style>
+  .home-content {
+    
+    background-image: url('../static/media/rbi.png');
+    height: 50rem;
+  }
+  .home-content .site-content{
+    padding-left:41.5rem;
+    padding-top: 2.5rem;
+  }
+  .auther,.mail{
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-decoration: none;
+    color: #f5f5f5d1;
+  }
+
+</style>
+{% endblock style%}
 {% block id %}Green Bank of India{% endblock id %}
 {% comment %} ---------------------------------------------------------------------------------------------------------------------------------- {% endcomment %}
 {% block username %}{{username}}{% endblock username %}
 {% block body %}
-
+<div class="home-content">
+  <div class="site-content col">
+    <h2 style="color: rgb(0, 194, 129);">Green Bank of India , </h2><h2 style="color:#0dcaf0";> Welcomes  our customers <br> to join us on our new collaboration with ,<div class="content" style="font-family: cursive;">Spark`s fountaion Company</div></h2>
+  </div>
+</div>
 
 
 
@@ -12,21 +35,11 @@
 {% comment %} ---------------------------------------------------------------------------------------------------------------------------------- {% endcomment %}
 
 {% block footer %}
-<footer>
+<footer style="background: linear-gradient(194deg, #420150, #11002a);min-height: 5rem;">
   <div class="container" id="#myContent">
-      <p>Author: Hege Refsnes</p>
-      <p><a href="mailto:hege@example.com">hege@example.com</a></p>
+      <p class="auther">Author: Prateek Kumar Singh:</p>
+      <p><a class="mail" href="mailto:hege@example.com">hege@example.com</a></p>
   </div>
 </footer>
 {% endblock footer %}
-{% comment %} -------------*******************Footer********************------------------ {% endcomment %}
 
-{% block js %}
-<script>
-  var myClassName = "foo";
-
-  $(function() {
-      $("#myContent").addClass(myClassName);
-  });
-</script>
-{% endblock js %}
