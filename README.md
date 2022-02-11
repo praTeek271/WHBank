@@ -7,12 +7,12 @@ The Dummy data is a data of 'Voice Actors of SAO(Sword Art Online Anime Series) 
 
 As for the working of the project :
     > Flow of Website : 
-                  >      (i)        HomePage 
-                  >      (ii)       View of All the available Members
-                  >      (iii)      View of any Particular Member
-                  >      (iv)       With a transaction form(for sending money)
-                  >      (v)        The Member page also Consist of a Transaction History Page Link
-                  >      (vi)       This page shows the log of :
+                      (i)        *HomePage* 
+                      (ii)       *View of All the available Members*
+                       (iii)      *View of any Particular Member*
+                      (iv)       *With a transaction form(for sending money)*
+                       (v)        *The Member page also Consist of a Transaction History Page Link*
+                       (vi)       *This page shows the log of* :
                                         >       how much ammount is deducted
                                         >       how much ammount is recieved
 
