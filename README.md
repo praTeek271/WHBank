@@ -20,7 +20,6 @@ As for the working of the project :
 * Adtional feature :
         > I have also added Login , Create user option
         (Although they are just mere links to the admin`s user creater, and login  page)
-
         > And a fully functioning Feedback form to recieve the error`s faced by the users
 
 
