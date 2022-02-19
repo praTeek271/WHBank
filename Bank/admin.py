@@ -6,10 +6,6 @@ from django.contrib import auth
 admin.site.register(FeedBack)
 admin.site.register(transectiondetail)
 admin.site.register(CustomerAccount)
-# admin.site.register(transection)
-
-admin.site.unregister(auth.models.User)
-admin.site.unregister(auth.models.Group)
 
 
 # ADMIN Password: ----------------------------------------

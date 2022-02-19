@@ -6,7 +6,8 @@
     <div class="row">
     <div class="col-md-4">
     <div class="row">
-        <img src="{{memberDetail.image}}" width="233px" height="385px">
+        {% load static %}
+        <img src="{% static './media/user.png'%}" alt="{{memberDetail.image}}"  min-width="233px" min-height="385px">
     </div>
     </div>
 
@@ -21,6 +22,7 @@
           <div class="Account_status" style="color:Red;font-weight: bold;">Account : Inactive</div>
           {% endif %}
         </p>
+        <p>PhoneNO: {{memberDetail.phoneno}}</p>
         <div class="transactionLog">
                 <a href="/transacton_history/{{memberDetail.name}}" style="text-decoration: none;text-decoration-color: coral;">Transaction Log History</a>
         </div>
@@ -36,6 +38,10 @@
 <div class="transaction-form">
 <form method="POST" style="padding:17rem; padding-block:6rem; background-color: #5f9ea045;">
     {% csrf_token %} 
+    
+    <span     style="font-size: 1.8em; font-weight: 500; position: relative; align-content: center;padding-right: 5em;">
+        Make Your Transactions Here
+    </span>
     <table>
     <tr>
         <td>

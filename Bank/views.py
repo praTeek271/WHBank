@@ -53,11 +53,11 @@ def Member(request,acc): #register function
                             transfer_detail=transectiondetail(recievername=rname,recieveremail=remail,sendername=sname,senderemail=semail,money_amt=int(sammount))
                             transfer_detail.save()
                             member1=CustomerAccount.objects.get(name=rname) # Reciever`s id
-                            print(member1)
+                            # print("member1-----------: ",member1)
                             member1.totalbalance=(member1.totalbalance+int(sammount))
 
                             member2=CustomerAccount.objects.get(name=sname) # Sender`s id
-                            print(member2)
+                            # print("member2-----------: ",member2)
                             member2.totalbalance=(member1.totalbalance-int(sammount))
                             try:
                                 member1.save() #    <----------------,
@@ -101,5 +101,4 @@ def transaction_log(request,user):
         Rdetail=transectiondetail.objects.filter(recievername=user)
     except:
         Rdetail={'name':None}
-    print("--------------------->",Ddetail)
     return(render(request, 'Transaction-Log.html',{'userDdetails':Ddetail,'userRdetails':Rdetail}))
