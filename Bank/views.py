@@ -6,7 +6,7 @@ from .models import CustomerAccount,transectiondetail
 
 def homepage(request):
     Accname=request.user.username
-    return (render(request,'Homepage.html',{'username':Accname}))
+    return (render(request,'index.html',{'username':Accname}))
 
 
 def viewMember(request):
@@ -35,7 +35,7 @@ def FeedBackUs(request):
 def Member(request,acc): #register function
     member= CustomerAccount.objects.get(id=acc) 
 
- #------------------------ Transaction-Form------------------------------------
+    #------------------------ Transaction-Form------------------------------------
     print("------------>",request.user.username)   
 
     if (request.user.username!=(None or "")):
@@ -74,16 +74,15 @@ def Member(request,acc): #register function
                 return (render(request, 'Member.html', {'memberDetail':{'name':'Invalid transaction detail','email':'Please  Check your details and Try Again'}}))
     else:
         return(HttpResponse("<b>please Login <br>To make any Transactions...</b>"))
-#-------------------------------------------**__**----------------------------------------------------
     return (render(request, 'Member.html', {'memberDetail':member,'username':request.user.username}))
 
-#   +-----------------------------------------------------------------------------------------------------+
-#   | the transaction as to take two ways :                                                               |
-#   |                                  >    one will be to credit of reciever                             |
-#   |   ^                              >    the second will be to deduct the sender                       |
-#   |   |                                                                                                 |
-#   |   |         and save in their respective objects so that they can be fetched for showing            |
-#   +-----------------------------------------**_**-------------------------------------------------------+
+        #   +-----------------------------------------------------------------------------------------------------+
+        #   | the transaction as to take two ways :                                                               |
+        #   |                                  >    one will be to credit of reciever                             |
+        #   |   ^                              >    the second will be to deduct the sender                       |
+        #   |   |                                                                                                 |
+        #   |   |         and save in their respective objects so that they can be fetched for showing            |
+        #   +-----------------------------------------**_**-------------------------------------------------------+
 
 def db_check(dbdtls):
     data=dbdtls
