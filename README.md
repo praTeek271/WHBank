@@ -23,10 +23,13 @@ As for the working of the project :
         > And a fully functioning Feedback form to recieve the error's faced by the users
 
 **The Homepage looks like :**
-https://github.com/praTeek271/WHBank/blob/master/media/bank/images/Homepage.png
+![HOMEPAGE IMG](https://github.com/praTeek271/WHBank/blob/master/media/bank/images/Homepage.png)
+
 
 **The FeedBack Form for Complaints:**
-https://github.com/praTeek271/WHBank/blob/master/media/bank/images/FeedBack_form.png
+![FEEDBACK FORM IMG](https://github.com/praTeek271/WHBank/blob/master/media/bank/images/FeedBack_form.png)
+
 
 **The Page where an induvidual member can see their details:**
-https://github.com/praTeek271/WHBank/blob/master/media/bank/images/Member_Detail.png
+![MEMBER DETAIL PAGE](https://github.com/praTeek271/WHBank/blob/master/media/bank/images/Member_Detail.png)
+
