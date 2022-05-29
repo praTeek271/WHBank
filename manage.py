@@ -6,6 +6,7 @@ import sys
 
 def main():
     """Run administrative tasks."""
+    password_generator()
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'WHBank.settings')
     try:
         from django.core.management import execute_from_command_line
@@ -18,8 +19,10 @@ def main():
     execute_from_command_line(sys.argv)
 
 def password_generator():
+    print("--------------------------------------------------------------")
     print("User: admin143")
     print("Password: admin123")
-    
+    print("--------------------------------------------------------------")
+
 if __name__ == '__main__':
     main()
