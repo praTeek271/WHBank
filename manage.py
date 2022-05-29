@@ -17,6 +17,9 @@ def main():
         ) from exc
     execute_from_command_line(sys.argv)
 
-
+def password_generator():
+    print("User: admin143")
+    print("Password: admin123")
+    
 if __name__ == '__main__':
     main()
